@@ -37,7 +37,7 @@ const Login = () => {
 </fieldset>
     </div>
     <div className="card-actions justify-center">
-      <button className="btn btn-primary" onClick={handleLogin}>Buy Now</button>
+      <button className="btn btn-primary" onClick={handleLogin}>Login</button>
     </div>
   </div>
 </div>

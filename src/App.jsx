@@ -4,19 +4,27 @@ import Login from "./components/Login";
 import { Provider } from "react-redux";
 import store from "./Store/store";
 import { Feed } from "./components/Feed";
+import { BrowserRouter } from "react-router-dom";
 function App() {
  
 
   return (
     <>
-    <Provider store={store}>
-    <Routes>
-      <Route path="/" element={<Body/>}>
-      <Route path="/" element={<Feed/>}></Route>
-      <Route path="/login" element={<Login/>}></Route>
-      </Route>
-    </Routes>
-    </Provider>
+     <Provider store={store}>
+        <BrowserRouter basename="/">
+          <Routes>
+            <Route path="/" element={<Body />}>
+              <Route path="/" element={<Feed />} />
+              <Route path="/login" element={<Login />} />
+              {/* <Route path="/profile" element={<Profile />} />
+              <Route path="/connections" element={<Connections />} />
+              <Route path="/requests" element={<Requests />} />
+              <Route path="/premium" element={<Premium />} />
+              <Route path="/chat/:targetUserId" element={<Chat />} /> */}
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </Provider>
     
     </>
   )

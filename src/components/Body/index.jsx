@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Navbar from '../Navbar'
 import Footer from "../Footer";
+import { Feed } from '../Feed';
 import { Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -33,7 +34,8 @@ const Body = () => {
     fetchUser();
   },[])
   return (
-    <> <Navbar/>
+    <> 
+    <Navbar/>
     <Outlet/>
     <Footer/>
     </>
