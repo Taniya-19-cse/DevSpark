@@ -4,20 +4,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { BASE_URL } from '../../utils/constants';
 import { removeUser } from '../../Store/userSlice';
+import { useNavigate } from 'react-router-dom';
 function Navbar() {
 const user=useSelector((store)=>store.user);
 const dispatch=useDispatch();
+const navigate=useNavigate();
 const handleLogout=async()=>{
   try{
     await axios.post(BASE_URL+"/logout",{},{withCredentials:true});
     dispatch(removeUser());
+    return navigate("/login");
   }catch(err)
   {
     console.log(err);
   }
 }
   return (
-<div className="navbar bg-base-200 shadow-sm text-white">
+<div className="navbar bg-base-200 shadow-sm text-white sticky top-0">
   <div className="flex-1">
     <Link to="/" className="btn btn-ghost text-xl">DevSpark</Link>
   </div>
@@ -30,7 +33,7 @@ const handleLogout=async()=>{
         <div className="w-10 rounded-full">
           <img
             alt="user profile photo"
-            src={user.photoUrl} />
+            src={user.photoURL} />
         </div>
       </div>
       <ul
@@ -42,7 +45,16 @@ const handleLogout=async()=>{
             <span className="badge">New</span>
           </Link>
         </li>
-        <li><a>Settings</a></li>
+        <li>
+          <Link to="/connections" className="justify-between">
+            Connections
+          </Link>
+        </li>
+         <li>
+          <Link to="/requests" className="justify-between">
+            Connection Requests
+          </Link>
+        </li>
         <li><a onClick={handleLogout}>Logout</a></li>
       </ul>
     </div>)

@@ -24,7 +24,7 @@ const Login = () => {
           }
         }
   return (
-  <div className="flex justify-center"> 
+  <div className="flex justify-center mt-3"> 
     <div className="card bg-base-100 w-96 shadow-md">
   <div className="card-body">
     <h2 className="card-title justify-center">Login</h2>
@@ -32,7 +32,7 @@ const Login = () => {
     <fieldset className="fieldset">
   <label className="label" htmlFor="name">Email</label>
   <input type="text" id="email" className="input" value={emailId} onChange={(e)=>setEmailId(e.target.value)} placeholder="Email" />
-   <label className="label" htmlFor="Password">Name</label>
+   <label className="label" htmlFor="Password">Password</label>
   <input type="text" id="password" className="input" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" />
 </fieldset>
     </div>
