@@ -1,8 +1,21 @@
 import React from 'react'
-
+import axios from 'axios';
+import { useRevalidator } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { removeUserFromFeed } from '../../Store/feedSlice';
+import {BASE_URL} from "../../utils/constants";
 function Card({user}) {
-    const{firstName,lastName,age,gender,about,photoURL}=user;
-    console.log(user);
+    const{_id,firstName,lastName,age,gender,about,photoURL}=user;
+    const dispatch=useDispatch();
+    // console.log(user);
+    const handleRequest=async(status,userId)=>{
+      try{
+        const res= await axios.post(BASE_URL+"/request/send/"+status+"/"+userId,{},{withCredentials:true});
+        dispatch(removeUserFromFeed(userId));
+      }catch(err){
+        console.log(err.message);
+      }
+    }
   return (
     <div><div className="card bg-base-100 w-96 shadow-sm">
   <figure>
@@ -16,8 +29,8 @@ function Card({user}) {
     <p>{user.gender}</p>
     <p>{user.age} years</p>
     <div className="card-actions justify-end">
-      <button className="btn btn-primary">Interested</button>
-       <button className="btn btn-secondary">Ignore</button>
+      <button className="btn btn-primary" onClick={()=>handleRequest("interested",_id)}>Interested</button>
+       <button className="btn btn-secondary" onClick={()=>handleRequest("rejected",_id)}>Ignore</button>
     </div>
   </div>
 </div></div>
