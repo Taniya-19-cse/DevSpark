@@ -37,8 +37,9 @@ const Requests = () => {
     <div className="text-center my-10">
       <h1 className="text-bold text-3xl text-white">Requests</h1>
       {requests.map((request) => {
-        const { _id, firstName, lastName, photoUrl, age, gender, about } =
+        const { _id, firstName, lastName, photoURL, age, gender, about } =
           request.fromUserId;
+          console.log( request.fromUserId);
         return (
           <div
             key={_id}
@@ -50,7 +51,7 @@ const Requests = () => {
                 src=""
                 className="w-20 h-20 rounded-full "
                 alt="photo"
-                src={photoUrl}
+                src={photoURL}
               />
             </div>
             <div className="text-left mx-4">
@@ -61,7 +62,6 @@ const Requests = () => {
               <p>{about}</p>
             </div>
             <div>
-                <h1>{request._id}</h1>
               <button className="btn btn-active btn-primary mx-2" onClick={()=>reviewRequest("accepted",request._id)}>Accept</button>
               <button className="btn btn-active btn-secondary mx-2" onClick={()=>reviewRequest("rejected",request._id)}>
                 Reject

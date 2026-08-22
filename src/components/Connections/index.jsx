@@ -38,7 +38,7 @@ const Connections = () => {
               <h1 className='font-bold text-xl'>{firstName + " "+lastName}</h1>
              {age && gender &&<p>{age+", "+ gender}</p>}
               <p>{about}</p></div>
-             
+             <Link to={"/chat/"+_id}> <button className='btn btn-primary'>Chat</button></Link>
             </div>
           )
           
